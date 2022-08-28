@@ -27,11 +27,17 @@ class Log {
 
     }
 
+    public static function channels(string $channels)
+    {
+        return explode(",",$_SERVER[$channels]);
+
+    }
+
 
     public static function error(string $message, $context = null)
     {
 
-    	$CHANNELS = DEBUG_ERROR_CHANNELS;
+    	$CHANNELS = self::channels('DEBUG_ERROR_CHANNELS');
 
     	foreach($CHANNELS as $channel) {
 
@@ -46,7 +52,7 @@ class Log {
     public static function warn(string $message, $context = null)
     {
 
-    	$CHANNELS = DEBUG_WARNING_CHANNELS;
+    	$CHANNELS = self::channels('DEBUG_WARNING_CHANNELS');
 
     	foreach($CHANNELS as $channel) {
 
@@ -61,7 +67,7 @@ class Log {
     public static function info(string $message, $context = null)
     {
 
-    	$CHANNELS = DEBUG_INFO_CHANNELS;
+    	$CHANNELS = self::channels('DEBUG_INFO_CHANNELS');
 
     	foreach($CHANNELS as $channel) {
 
