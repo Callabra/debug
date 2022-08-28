@@ -58,7 +58,7 @@ class Log {
 
             $Channel = __NAMESPACE__ . "\\" . $channel;
             $Log = new $Channel();
-            $Log->warning($message,self::format($context));
+            $Log->warn($message,self::format($context));
 
     	}
 
