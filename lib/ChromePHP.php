@@ -24,24 +24,25 @@ class ChromePHP {
 	}
 
 
-	public function error( string $message, array|object $context)
+	public function error( string $message, array $context)
 	{
-		
-		$this->Logger->error("", array($message => $context) );
+
+		$this->Logger->error($message, $context);
+	
 
 	}
 
-	public function warn( string $message, array|object $context)
+	public function warn( string $message, array $context)
 	{
-		
-		$this->Logger->warning("", array($message => $context) );
 
+		$this->Logger->warning($message, $context);
+		
 	}
 
-	public function info( string $message, array|object $context)
+	public function info( string $message, array $context)
 	{
-		
-		$this->Logger->info($message, array($message => $context) );
+
+		$this->Logger->info($message,$context);
 
 	}	
 

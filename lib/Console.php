@@ -3,62 +3,45 @@ namespace Debug;
 
 use Monolog\Level;
 use Monolog\Logger;
-use Monolog\Handler\ChromePHPHandler;
+use Monolog\Handler\BrowserConsoleHandler;
 
 
 
-class Console extends Log {
+class Console {
 
 
-	public static $Console;
+	public $Logger;
 
-	public static function __init__() 
+
+	public function __construct() 
 	{
 
-		if(!self::$Console) {
-
-			self::$Console = new Logger('console');
-			self::$Console->pushHandler( new ChromePHPHandler() );
-
-		}
-				
+		$this->Logger = new \Monolog\Logger('console');
+		$Handler = new \Monolog\Handler\BrowserConsoleHandler(\Psr\Log\LogLevel::INFO);
+		$this->Logger->pushHandler( $Handler );
+	
 	}
 
 
-	public static function error($value,$name='')
+	public function error( string $message, array $context)
 	{
-		if(self::isActive() == true) {
 
-			self::__init__();
+		$this->Logger->error($message, $context);
+	
 
-			self::$Console->error($name . " : " . $value);
+	}
+
+	public function warn( string $message, array $context)
+	{
+
+		$this->Logger->warning($message, $context);
 		
-		} 
-
 	}
 
-	public static function warn($value,$name='')
-	{
-		if(self::isActive() == true) {
-
-			self::__init__();
-
-			self::$Console->warning($name . " : " . $value);
-
-
-		}
-	}
-
-	public static function info($value=null,$name=null)
+	public function info( string $message, array $context)
 	{
 
-		if(self::isActive() === true) {
-
-			self::__init__();
-
-			self::$Console->info($name . " : " . $value);
-
-		}
+		$this->Logger->info($message,$context);
 
 	}
 
