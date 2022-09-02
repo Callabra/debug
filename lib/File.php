@@ -13,7 +13,7 @@ class File {
 
 		#$value = self::format($value);
 		$Logger = new \Monolog\Logger('log');
-		$Logger->pushHandler(new \Monolog\Handler\StreamHandler('/var/www/html/logs/' . $filename . '.log', Level::Error));
+		$Logger->pushHandler(new \Monolog\Handler\StreamHandler('/var/www/logs/' . $filename . '.log', Level::Error));
 		$Logger->error("",array($message => $context));
 
 	}
@@ -23,7 +23,7 @@ class File {
 
 		#$value = self::format($value);
 		$Logger = new \Monolog\Logger('log');
-		$Logger->pushHandler(new \Monolog\Handler\StreamHandler('/var/www/html/logs/' . $filename . '.log', Level::Warning));
+		$Logger->pushHandler(new \Monolog\Handler\StreamHandler('/var/www/logs/' . $filename . '.log', Level::Warning));
 		$Logger->warning("",array($message => $context));
 
 	}
@@ -33,7 +33,7 @@ class File {
 	{
 		#$value = self::format($value);
 		$Logger = new \Monolog\Logger('log');
-		$Logger->pushHandler(new \Monolog\Handler\StreamHandler('/var/www/html/logs/' . $filename . '.log', Level::Info));
+		$Logger->pushHandler(new \Monolog\Handler\StreamHandler('/var/www/logs/' . $filename . '.log', Level::Info));
 		$Logger->info("",array($message => $context));
 	}
 
