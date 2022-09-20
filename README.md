@@ -31,4 +31,5 @@ You can call each channel directly as well by calling the class directly instead
 For example...
 
 > \Debug\File::error("message",$value);
+
 > \Debug\FirePHP::error("message",$value);
