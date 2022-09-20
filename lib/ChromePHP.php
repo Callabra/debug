@@ -1,10 +1,12 @@
 <?php
 namespace Debug;
 
+
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\ChromePHPHandler;
 use Monolog\Formatter\ChromePHPFormatter;
+
 
 class ChromePHP {
 
@@ -49,7 +51,3 @@ class ChromePHP {
 
 	
 } // end class
-
-
-
-?>

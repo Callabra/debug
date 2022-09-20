@@ -2,7 +2,6 @@
 namespace Debug;
 
 
-
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\FirePHPHandler;
@@ -52,7 +51,3 @@ class FirePHP {
 
 	
 } // end class
-
-
-
-?>

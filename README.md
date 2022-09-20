@@ -19,8 +19,8 @@ Each channel you defined in the environment variables will then output your data
 
 Currently channels are as follows:
 
-- ChromePHP - 
-- Console - 
-- File - 
-- FirePHP -
-- Pushover - 
+- File - logs to files. default directory /var/www/logs
+- Console - prints to browser console - f12 key
+- ChromePHP - Browser plug-in - https://craig.is/writing/chrome-logger
+- FirePHP - Browser plug-in - http://www.firephp.org/
+- Pushover - app for phones - https://pushover.net/

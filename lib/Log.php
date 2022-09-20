@@ -2,7 +2,6 @@
 namespace Debug;
 
 
-
 class Log {
 
     public static function format($context)
@@ -81,7 +80,3 @@ class Log {
 
 
 } // end class
-
-
-
-?>

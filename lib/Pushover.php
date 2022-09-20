@@ -1,10 +1,16 @@
 <?php
+###########################################################################################
+### For use with the pushover app. https://pushover.net/
+### Once signed up you'll need to define PUSHOVER_KEY, PUSHOVER_USER with keys from their
+### website. PUSHOVER_TITLE is used to group alerts inside the app.
+###########################################################################################
+
 namespace Debug;
+
 
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\PushoverHandler;
-
 
 
 class Pushover {
@@ -36,7 +42,3 @@ class Pushover {
 
 	
 } // end class
-
-
-
-?>

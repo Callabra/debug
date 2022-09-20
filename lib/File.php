@@ -1,9 +1,11 @@
 <?php
 namespace Debug;
 
+
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+
 
 class File {
 
@@ -39,7 +41,3 @@ class File {
 
 
 } // end class
-
-
-
-?>

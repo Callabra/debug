@@ -1,10 +1,10 @@
 <?php
 namespace Debug;
 
+
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\BrowserConsoleHandler;
-
 
 
 class Console {
@@ -47,7 +47,3 @@ class Console {
 
 	
 } // end class
-
-
-
-?>
