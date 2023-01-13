@@ -16,6 +16,10 @@ Then call like so
 
 Each channel you defined in the environment variables will then output your data.
 
+If you are using log files you will need to set the default path like this.
+
+> SetEnv DEBUG_FILE_PATH /var/www/logs/
+
 
 Currently channels are as follows:
 
@@ -33,3 +37,5 @@ For example...
 > \Debug\File::error("message",$value);
 
 > \Debug\FirePHP::error("message",$value);
+
+Calling the channel directly is discouraged as it bypasses the code portability that the environmental variables enable.

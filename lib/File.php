@@ -1,11 +1,9 @@
 <?php
 namespace Debug;
 
-
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
-
 
 class File {
 
@@ -15,7 +13,7 @@ class File {
 
 		#$value = self::format($value);
 		$Logger = new \Monolog\Logger('log');
-		$Logger->pushHandler(new \Monolog\Handler\StreamHandler('/var/www/logs/' . $filename . '.log', Level::Error));
+		$Logger->pushHandler(new \Monolog\Handler\StreamHandler($_SERVER['DEBUG_FILE_PATH'] . $filename . '.log', Level::Error));
 		$Logger->error("",array($message => $context));
 
 	}
@@ -25,7 +23,7 @@ class File {
 
 		#$value = self::format($value);
 		$Logger = new \Monolog\Logger('log');
-		$Logger->pushHandler(new \Monolog\Handler\StreamHandler('/var/www/logs/' . $filename . '.log', Level::Warning));
+		$Logger->pushHandler(new \Monolog\Handler\StreamHandler($_SERVER['DEBUG_FILE_PATH'] . $filename . '.log', Level::Warning));
 		$Logger->warning("",array($message => $context));
 
 	}
@@ -35,9 +33,13 @@ class File {
 	{
 		#$value = self::format($value);
 		$Logger = new \Monolog\Logger('log');
-		$Logger->pushHandler(new \Monolog\Handler\StreamHandler('/var/www/logs/' . $filename . '.log', Level::Info));
+		$Logger->pushHandler(new \Monolog\Handler\StreamHandler($_SERVER['DEBUG_FILE_PATH'] . $filename . '.log', Level::Info));
 		$Logger->info("",array($message => $context));
 	}
 
 
 } // end class
+
+
+
+?>
