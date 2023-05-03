@@ -6,7 +6,8 @@
     "license": "MIT",
     "require": {
         "php": ">=8.0",
-        "monolog/monolog":"^3.0"
+        "monolog/monolog":"^3.0",
+        "rollbar/rollbar": "^4"
     }, 
     "autoload": {
         "psr-4": {
