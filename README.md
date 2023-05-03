@@ -25,9 +25,10 @@ Currently channels are as follows:
 
 - File - logs to files. default directory /var/www/logs
 - Console - prints to browser console - f12 key
-- ChromePHP - Browser plug-in - https://craig.is/writing/chrome-logger
-- FirePHP - Browser plug-in - http://www.firephp.org/
+- ChromePHP - browser plug-in - https://craig.is/writing/chrome-logger
+- FirePHP - browser plug-in - http://www.firephp.org/
 - Pushover - app for phones - https://pushover.net/
+- Rollbar - error logging service - https://www.rollbar.com
 
 
 You can call each channel directly as well by calling the class directly instead of the Log class. 
