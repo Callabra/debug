@@ -38,6 +38,9 @@ class Log {
 
     	$CHANNELS = self::channels('DEBUG_ERROR_CHANNELS');
 
+        
+        
+
     	foreach($CHANNELS as $channel) {
 
             $Channel = __NAMESPACE__ . "\\" . $channel;
