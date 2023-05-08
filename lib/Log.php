@@ -28,7 +28,7 @@ class Log {
 
     public static function channels(string $channels)
     {
-        return explode(",",$_SERVER[$channels]);
+        return array_filter(explode(",",$_SERVER[$channels]));
 
     }
 
@@ -37,9 +37,6 @@ class Log {
     {
 
     	$CHANNELS = self::channels('DEBUG_ERROR_CHANNELS');
-
-        
-        
 
     	foreach($CHANNELS as $channel) {
 
