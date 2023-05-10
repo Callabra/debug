@@ -18,7 +18,7 @@ class Rollbar {
 		    'code_version' => '27f47021038a159c5aa9bbb9f98ce47e55914404'
 		);
 
-		\Rollbar\Rollbar::init($config);   		
+		\Rollbar\Rollbar::init($config, false, false);   		
 	}
 
 
