@@ -11,7 +11,7 @@ class Rollbar {
 		    // required
 		    'access_token' => $_SERVER['ROLLBAR_TOKEN'],
 		    // optional - environment name. any string will do.
-		    'environment' => $_SERVER['ENVIRONMENT'],
+		    'environment' => $_SERVER['ROLLBAR_ENVIRONMENT'],
 		    // optional - path to directory your code is in. used for linking stack traces.
 		    'root' => $_SERVER['DOCUMENT_ROOT'],
 		    // optional - the code version. e.g. git commit SHA or release tag
