@@ -39,4 +39,4 @@ For example...
 
 > \Debug\FirePHP::error("message",$value);
 
-Calling the channel directly is discouraged as it bypasses the code portability that the environmental variables enable.
+Calling the channel directly still requires the channel to be present in the environmental channels variable (DEBUG_ERROR_CHANNELS, etc). This allows you to use one channel for development without the need to remove the calls when pushing to production. (e.g. Call FirePHP directly and know it will do nothing in production because that isn't an allowed channel in that environment)
