@@ -33,7 +33,6 @@ class Pushover {
 
 		// if Pushover isn't in the allowed channels we do nothing
 		if(\Debug\Log::allowed('Pushover', 'DEBUG_WARNING_CHANNELS') !== true) {
-			print "false";
 			return false;
 		}
 
