@@ -32,6 +32,16 @@ class Log {
 
     }
 
+    public static function allowed(string $channel, string $channels) 
+    {
+        $channels = self::channels($channels);
+        if(in_array($channel,$channels)) {
+            return true;
+        }
+
+        return false;
+    }
+
 
     public static function error(string $message, $context = null)
     {

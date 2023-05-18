@@ -15,8 +15,13 @@ namespace Debug;
 class Rollbar {
 
 
-	public static function init()
+	public static function init(string $channels)
 	{
+
+		// if Rollbar isn't in the allowed channels we do nothing
+		if(\Debug\Log::allowed('Rollbar', $channels) !== true) {
+			return false;
+		}		
 
 		$person = array();
 		if(isset($_SERVER['ROLLBAR_PERSON_ID'])) { // ID IS REQUIRED BY ROLLBAR TO TRACK BY PERSON SO IT MUST BE SET IN ENVIRONMENT VARIABLES TO ENABLE
@@ -56,34 +61,36 @@ class Rollbar {
 		    
 		);
 
-		\Rollbar\Rollbar::init($config, false, false);   		
+		\Rollbar\Rollbar::init($config, false, false);   	
+
+		return true;	
 	}
 
 
-	public static function error( string $message, array $context)
+	public static function error( string $message, $context = null)
 	{
 
-		self::init();
+		$allowed = self::init('DEBUG_ERROR_CHANNELS');
 
-	    \Rollbar\Rollbar::log(\Rollbar\Payload\Level::ERROR, $message, $context);
+	    $allowed ? \Rollbar\Rollbar::log(\Rollbar\Payload\Level::ERROR, $message, (array) $context) : false;
 
 	}
 
-	public static function warn( string $message, array $context)
+	public static function warn( string $message, $context = null)
 	{
 
-		self::init();
+		$allowed = self::init('DEBUG_WARNING_CHANNELS');
 
-	    \Rollbar\Rollbar::log(\Rollbar\Payload\Level::WARNING, $message, $context);
+	    $allowed ? \Rollbar\Rollbar::log(\Rollbar\Payload\Level::WARNING, $message, (array) $context) : false;
 		
 	}
 
-	public static function info( string $message, array $context)
+	public static function info( string $message, $context = null)
 	{
 
-		self::init();
+		$allowed = self::init('DEBUG_INFO_CHANNELS');
 
-	    \Rollbar\Rollbar::log(\Rollbar\Payload\Level::INFO, $message, $context);
+	    $allowed ? \Rollbar\Rollbar::log(\Rollbar\Payload\Level::INFO, $message, (array) $context) : false;
 
 	}	
 

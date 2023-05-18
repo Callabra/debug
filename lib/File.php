@@ -8,20 +8,29 @@ use Monolog\Handler\StreamHandler;
 class File {
 
 
-	public static function error(string $message, array $context, $filename='ERRORS')
+
+	public static function error(string $message, $context = null, $filename='ERRORS')
 	{
 
-		#$value = self::format($value);
+		// if File isn't in the allowed channels we do nothing
+		if(\Debug\Log::allowed('File', 'DEBUG_ERROR_CHANNELS') !== true) {
+			return false;
+		}	
+
 		$Logger = new \Monolog\Logger('log');
 		$Logger->pushHandler(new \Monolog\Handler\StreamHandler($_SERVER['DEBUG_FILE_PATH'] . $filename . '.log', Level::Error));
 		$Logger->error("",array($message => $context));
 
 	}
 
-	public static function warn(string $message, array $context, $filename='WARNINGS')
+	public static function warn(string $message, $context = null, $filename='WARNINGS')
 	{
 
-		#$value = self::format($value);
+		// if File isn't in the allowed channels we do nothing
+		if(\Debug\Log::allowed('File', 'DEBUG_WARNING_CHANNELS') !== true) {
+			return false;
+		}	
+
 		$Logger = new \Monolog\Logger('log');
 		$Logger->pushHandler(new \Monolog\Handler\StreamHandler($_SERVER['DEBUG_FILE_PATH'] . $filename . '.log', Level::Warning));
 		$Logger->warning("",array($message => $context));
@@ -29,9 +38,14 @@ class File {
 	}
 
 	
-	public static function info(string $message, array $context, $filename='INFO')
+	public static function info(string $message, $context = null, $filename='INFO')
 	{
-		#$value = self::format($value);
+		
+		// if File isn't in the allowed channels we do nothing
+		if(\Debug\Log::allowed('File', 'DEBUG_INFO_CHANNELS') !== true) {
+			return false;
+		}	
+
 		$Logger = new \Monolog\Logger('log');
 		$Logger->pushHandler(new \Monolog\Handler\StreamHandler($_SERVER['DEBUG_FILE_PATH'] . $filename . '.log', Level::Info));
 		$Logger->info("",array($message => $context));

@@ -10,11 +10,15 @@ use Monolog\Handler\BrowserConsoleHandler;
 class Console {
 
 
-	public function init() 
+	public static function init(string $channels) 
 	{
+		// if Console isn't in the allowed channels we do nothing
+		if(\Debug\Log::allowed('Console', $channels) !== true) {
+			return false;
+		}		
 
 		$Logger = new \Monolog\Logger('console');
-		$Handler = new \Monolog\Handler\BrowserConsoleHandler(\Psr\Log\LogLevel::INFO);
+		$Handler = new \Monolog\Handler\BrowserConsoleHandler();
 		$Logger->pushHandler( $Handler );
 
 		return $Logger;
@@ -22,28 +26,30 @@ class Console {
 	}
 
 
-	public function error( string $message, array $context)
+	public static function error( string $message, $context = null)
 	{
-		$Logger = self::init();
 
-		$Logger->error($message, $context);
+		$Logger = self::init('DEBUG_ERROR_CHANNELS');
+
+		$Logger ? $Logger->error($message, (array) $context) : false;
 
 	}
 
-	public function warn( string $message, array $context)
+	public static function warn( string $message, $context = null)
 	{
-		$Logger = self::init();
 
-		$Logger->warning($message, $context);
+		$Logger = self::init('DEBUG_WARNING_CHANNELS');
+
+		$Logger ? $Logger->warning($message, (array) $context) : false;
 		
 	}
 
-	public function info( string $message, array $context)
+	public static function info( string $message, $context = null)
 	{
 
-		$Logger = self::init();
+		$Logger = self::init('DEBUG_INFO_CHANNELS');
 
-		$Logger->info($message,$context);
+		$Logger ? $Logger->info($message, (array) $context) : false;
 
 	}
 

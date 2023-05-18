@@ -11,9 +11,15 @@ use Monolog\Formatter\ChromePHPFormatter;
 class ChromePHP {
 
 
-	public function init() 
+	public static function init(string $channels) 
 	{
 
+		// if ChromePHP isn't in the allowed channels we do nothing
+		if(\Debug\Log::allowed('ChromePHP', $channels) !== true) {
+			return false;
+		}
+
+		// otherwise we initialize the logger
 		$Logger = new \Monolog\Logger('chrome');
 		$Handler = new \Monolog\Handler\ChromePHPHandler();
 		$Handler->setFormatter(new \Monolog\Formatter\ChromePHPFormatter() );
@@ -23,30 +29,30 @@ class ChromePHP {
 
 	}
 
-
-	public function error( string $message, array $context)
+	public static function error( string $message, $context = null)
 	{
 
-		$Logger = self::init();
+		$Logger = self::init('DEBUG_ERROR_CHANNELS');
 
-		$Logger->error($message, $context);
+		$Logger ? $Logger->error($message, (array) $context) : false;
 	
 	}
 
-	public function warn( string $message, array $context)
+	public static function warn( string $message, $context = null)
 	{
-		$Logger = self::init();
 
-		$Logger->warning($message, $context);
+		$Logger = self::init('DEBUG_WARNING_CHANNELS');
+
+		$Logger ? $Logger->warning($message, (array) $context) : false;
 		
 	}
 
-	public function info( string $message, array $context)
+	public static function info( string $message, $context = null)
 	{
 
-		$Logger = self::init();
+		$Logger = self::init('DEBUG_INFO_CHANNELS');
 
-		$Logger->info($message,$context);
+		$Logger ? $Logger->info($message, (array) $context) : false;
 
 	}	
 
