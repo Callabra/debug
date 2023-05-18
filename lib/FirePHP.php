@@ -11,39 +11,43 @@ use Monolog\Formatter\WildfireFormatter;
 class FirePHP {
 
 
-	public $Logger;
-
-
-	public function __construct() 
+	public static function init() 
 	{
 
-		$this->Logger = new \Monolog\Logger('firephp');
+		$Logger = new \Monolog\Logger('firephp');
 		$Handler = new \Monolog\Handler\FirePHPHandler();
 		$Handler->setFormatter(new \Monolog\Formatter\WildfireFormatter() );
-		$this->Logger->pushHandler( $Handler );
+		$Logger->pushHandler( $Handler );
+
+		return $Logger;
 	
 	}
 
 
-	public function error( string $message, array $context)
+	public static function error( string $message, $context = null)
 	{
 
-		$this->Logger->error($message, $context);
-	
+		$Logger = self::init();
+
+		$Logger->error($message, $context);
 
 	}
 
-	public function warn( string $message, array $context)
+	public static function warn( string $message, $context = null)
 	{
 
-		$this->Logger->warning($message, $context);
+		$Logger = self::init();
+
+		$Logger->warning($message, $context);
 		
 	}
 
-	public function info( string $message, array $context)
+	public static function info( string $message, $context = null)
 	{
 
-		$this->Logger->info($message,$context);
+		$Logger = self::init();
+
+		$Logger->info($message, (array) $context);
 
 	}	
 

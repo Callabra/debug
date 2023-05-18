@@ -10,38 +10,40 @@ use Monolog\Handler\BrowserConsoleHandler;
 class Console {
 
 
-	public $Logger;
-
-
-	public function __construct() 
+	public function init() 
 	{
 
-		$this->Logger = new \Monolog\Logger('console');
+		$Logger = new \Monolog\Logger('console');
 		$Handler = new \Monolog\Handler\BrowserConsoleHandler(\Psr\Log\LogLevel::INFO);
-		$this->Logger->pushHandler( $Handler );
+		$Logger->pushHandler( $Handler );
+
+		return $Logger;
 	
 	}
 
 
 	public function error( string $message, array $context)
 	{
+		$Logger = self::init();
 
-		$this->Logger->error($message, $context);
-	
+		$Logger->error($message, $context);
 
 	}
 
 	public function warn( string $message, array $context)
 	{
+		$Logger = self::init();
 
-		$this->Logger->warning($message, $context);
+		$Logger->warning($message, $context);
 		
 	}
 
 	public function info( string $message, array $context)
 	{
 
-		$this->Logger->info($message,$context);
+		$Logger = self::init();
+
+		$Logger->info($message,$context);
 
 	}
 

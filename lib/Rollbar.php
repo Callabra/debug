@@ -1,4 +1,14 @@
 <?php
+###########################################################################################
+### For use with the rollbar service. https://rollbar.com/
+### Once signed up you'll need to define the below ENVIRONMENT VARIABLES
+### ROLLBAR_TOKEN - required - api access token for your project
+### ROLLBAR_ENVIRONMENT - required - the environment name (e.g. development, production, staging, etc)
+### ROLLBAR_PERSON_ID - optional. SESSION key of the user's id (this field is required if you want to use person tracking)
+### ROLLBAR_PERSON_USERNAME - optional - SESSION key of the user's username
+### ROLLBAR_PERSON_EMAIL - optional - SESSION key of the user's email
+###########################################################################################
+
 namespace Debug;
 
 
